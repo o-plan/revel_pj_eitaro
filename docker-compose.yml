@@ -1,0 +1,9 @@
+version: '2'
+services:
+    web:
+        build: .
+        command: revel run revel_app
+        volumes:
+           - ./revel_app:/go/src/revel_app
+        ports:
+            - 9000:9000

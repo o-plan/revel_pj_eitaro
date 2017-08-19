@@ -1,0 +1,21 @@
+version: '2'
+services:
+    web:
+        build: .
+        command: revel run revel_app
+        volumes:
+           - ./revel_app:/go/src/revel_app
+        environment:
+           - ELASTICSEARCH_URL=http://elastic:9200
+        ports:
+            - 9000:9000
+        links:
+          - elas
+    elas:
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.5.0
+        volumes:
+            - ./esdata:/usr/share/elasticsearch/data
+            - ./script/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+            - ./script/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
+        ports:
+            - 9200:9200

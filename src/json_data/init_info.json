@@ -1,0 +1,9 @@
+{
+	"info": {
+		"properties": {
+			"member_type": { "type": "string" },
+			"name": {"type": "string" }
+		}
+	}
+}
+
